@@ -1,5 +1,7 @@
 package com.ITAcademy.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="shop")
@@ -24,13 +26,13 @@ public class Shop {
 		@Column(name = "capacity")
 		private int capacity;
 		
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne
 		@JoinColumn(name = "id_franchise")
 		private Franchise franchise;
 		
 		@OneToMany
 		@JoinColumn(name = "id")
-		private Picture picture;
+		private List<Picture> picture;
 		
 		//Constructores
 		public Shop() {
@@ -88,13 +90,27 @@ public class Shop {
 		public void setFranchise(Franchise franchise) {
 			this.franchise = franchise;
 		}
-		//impresión datos por consola
+		
+		
+		@JsonIgnore
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "Video")
+		public List<Picture> getPicture() {
+			return picture;
+		}
+
+
+		public void setPicture(List<Picture> picture) {
+			this.picture = picture;
+		}
+
 
 		@Override
 		public String toString() {
 			return "Shop [id=" + id + ", nameshop=" + nameshop + ", capacity=" + capacity + ", franchise=" + franchise
-					+ ", getId()=" + getId() + ", getNameshop()=" + getNameshop() + ", getCapacity()=" + getCapacity()
-					+ ", getFranchise()=" + getFranchise() + "]";
+					+ ", picture=" + picture + "]";
 		}
+
+		//impresión datos por consola
+		
 
 }

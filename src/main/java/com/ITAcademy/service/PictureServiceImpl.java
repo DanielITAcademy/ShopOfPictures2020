@@ -14,12 +14,21 @@ public class PictureServiceImpl implements IPictureService {
 	IPictureDAO IPictureDAO;
 	
 	@Override
-	public Picture addPicture(Picture picture) {
-		return IPictureDAO.save(addPicture(picture));
-	}
-	@Override
 	public List<Picture> listPicture() {
 		return IPictureDAO.findAll();
+	}
+	@Override
+	public Picture savePicture(Picture picture) {
+		return IPictureDAO.save(picture);
+	}
+	
+	@Override 
+	public Picture pictureXID(Long id) {
+		return IPictureDAO.findById(id).get();
+	}
+	@Override
+	public Picture updatePicture(Picture picture) {
+		return IPictureDAO.save(picture);
 	}
 	@Override
 	public void eliminatePicture(Long id) {

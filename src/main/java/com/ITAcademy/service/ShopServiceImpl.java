@@ -13,13 +13,28 @@ public class ShopServiceImpl implements IShopService {
 		@Autowired
 		IShopDAO IShopDAO;
 		
-		@Override
-		public Shop createShop(Shop shop) {
-			return IShopDAO.save(shop);
-		}
 		@Override 
 		public List<Shop> listarShop(){
 			return IShopDAO.findAll();
 		}
+		
+		@Override
+		public Shop saveShop(Shop shop) {
+			return IShopDAO.save(shop);
+		}
+		
+		@Override
+		public Shop shopXID(Long id) {
+			return IShopDAO.findById(id).get();
+		}
 
+		@Override
+		public Shop updateShop(Shop shop) {
+			return IShopDAO.save(shop);
+		}
+		
+		@Override
+		public void eliminateShop(Long id) {
+			IShopDAO.deleteById(id);
+		}
 }

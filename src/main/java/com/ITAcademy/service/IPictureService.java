@@ -7,7 +7,9 @@ import com.ITAcademy.dto.Picture;
 public interface IPictureService {
 
 	//Métodos del CRUD
-	public Picture addPicture(Picture picture);//Añadir cuadro
 	public List<Picture>listPicture();//Listar cuadro
-	public void eliminatePicture(Long id);//Eliminar cuadro
+	public Picture savePicture(Picture picture);//Añadir cuadro CREATE
+	public Picture pictureXID(Long id);//Leer datos de un cliente READ
+	public Picture updatePicture(Picture picture);//Actualiza datos del cuadro UPDATE
+	public void eliminatePicture(Long id);//Eliminar TODOS LOS CUADROS DELETE
 }

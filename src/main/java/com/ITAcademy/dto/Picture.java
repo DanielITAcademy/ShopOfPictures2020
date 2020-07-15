@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="picture")
+@Table(name="pictures")
 public class Picture {
 	//Atributos de los cuadros
 		@Id
@@ -30,7 +30,7 @@ public class Picture {
 		@Column(name = "dateofregister")
 		private Date dateofregister;
 		
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne
 		@JoinColumn(name="id_shop")
 		private Shop shop;
 		
@@ -47,16 +47,68 @@ public class Picture {
 			this.price = price;
 			this.shop = shop;
 		}
+		
+		
 		//impresión datos por consola
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getNameauthor() {
+			return nameauthor;
+		}
+
+		public void setNameauthor(String nameauthor) {
+			this.nameauthor = nameauthor;
+		}
+
+		public String getNamepicture() {
+			return namepicture;
+		}
+
+		public void setNamepicture(String namepicture) {
+			this.namepicture = namepicture;
+		}
+
+		public Double getPrice() {
+			return price;
+		}
+
+		public void setPrice(Double price) {
+			this.price = price;
+		}
+
+		public Date getDateofregister() {
+			return dateofregister;
+		}
+
+		public void setDateofregister(Date dateofregister) {
+			this.dateofregister = dateofregister;
+		}
+
+		public Shop getShop() {
+			return shop;
+		}
+
+		public void setShop(Shop shop) {
+			this.shop = shop;
+		}
 
 		@Override
 		public String toString() {
-			return "Picture [id=" + id + ", nameauthor=" + nameauthor + ", namepicture=" + namepicture + ", price=" + price
-					+ ", shop=" + shop + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-					+ super.toString() + "]";
+			return "Picture [id=" + id + ", nameauthor=" + nameauthor + ", namepicture=" + namepicture + ", price="
+					+ price + ", dateofregister=" + dateofregister + ", shop=" + shop + "]";
 		}
+
+		
+	}
 		
 
 		
 
-}
+
